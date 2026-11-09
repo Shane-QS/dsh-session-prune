@@ -1,0 +1,9 @@
+# dsh-session-prune bundle patch
+#
+# 作为 DSH bundle 安装时，宿主读这份补丁层，把 Host 半侧插进条目树。
+# 用 install.ps1 安装时不需要它——脚本会直接把下面的 insert 写进
+# profiles/<profile>/cordis.patch.yml。
+- insert:
+    - id: session-prune
+      name: 'dsh-session-prune'
+      inject: [webServer]

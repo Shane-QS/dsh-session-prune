@@ -1,0 +1,14 @@
+# 依赖（插件是手放的，没有依赖树，但 pnpm 可能生成）
+node_modules/
+
+# 安装/卸载时自动生成的补丁备份
+*.bak-*
+*.bak
+
+# 自测结果文件
+*.result.json
+
+# 系统杂项
+.DS_Store
+Thumbs.db
+desktop.ini

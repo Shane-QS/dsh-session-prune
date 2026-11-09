@@ -1,0 +1,52 @@
+{
+  "name": "dsh-session-prune",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DSH Desktop 插件：侧栏会话菜单加「删除会话」，把会话记录、投影缓存与 workspace 登记一起清掉（GET 仅预演，删除只走 POST）",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "session"
+  ],
+  "os": [
+    "win32"
+  ],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/",
+    "client.js",
+    "cordis.patch.yml",
+    "install.ps1",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "powershell -NoProfile -ExecutionPolicy Bypass -File tests/run-tests.ps1",
+    "install-plugin": "powershell -NoProfile -ExecutionPolicy Bypass -File install.ps1",
+    "uninstall-plugin": "powershell -NoProfile -ExecutionPolicy Bypass -File install.ps1 -Uninstall"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
